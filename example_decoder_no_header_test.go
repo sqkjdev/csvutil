@@ -7,7 +7,7 @@ import (
 	"io"
 	"log"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 type User struct {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 type Bar int

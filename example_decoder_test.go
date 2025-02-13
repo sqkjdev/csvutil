@@ -7,7 +7,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 func ExampleDecoder_Decode() {

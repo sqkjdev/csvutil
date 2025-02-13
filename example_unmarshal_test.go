@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 func ExampleUnmarshal() {

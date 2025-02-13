@@ -1,4 +1,4 @@
-csvutil [![PkgGoDev](https://pkg.go.dev/badge/github.com/jszwec/csvutil@v1.4.0?tab=doc)](https://pkg.go.dev/github.com/jszwec/csvutil?tab=doc) ![Go](https://github.com/jszwec/csvutil/workflows/Go/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/jszwec/csvutil)](https://goreportcard.com/report/github.com/jszwec/csvutil) [![codecov](https://codecov.io/gh/jszwec/csvutil/branch/master/graph/badge.svg)](https://codecov.io/gh/jszwec/csvutil)
+csvutil [![PkgGoDev](https://pkg.go.dev/badge/github.com/sqkjdev/csvutil@v1.4.0?tab=doc)](https://pkg.go.dev/github.com/sqkjdev/csvutil?tab=doc) ![Go](https://github.com/sqkjdev/csvutil/workflows/Go/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/sqkjdev/csvutil)](https://goreportcard.com/report/github.com/sqkjdev/csvutil) [![codecov](https://codecov.io/gh/sqkjdev/csvutil/branch/master/graph/badge.svg)](https://codecov.io/gh/sqkjdev/csvutil)
 =================
 
 <p align="center">
@@ -7,14 +7,14 @@ csvutil [![PkgGoDev](https://pkg.go.dev/badge/github.com/jszwec/csvutil@v1.4.0?t
 
 Package csvutil provides fast, idiomatic, and dependency free mapping between CSV and Go (golang) values.
 
-This package is not a CSV parser, it is based on the [Reader](https://godoc.org/github.com/jszwec/csvutil#Reader) and [Writer](https://godoc.org/github.com/jszwec/csvutil#Writer)
+This package is not a CSV parser, it is based on the [Reader](https://godoc.org/github.com/sqkjdev/csvutil#Reader) and [Writer](https://godoc.org/github.com/sqkjdev/csvutil#Writer)
 interfaces which are implemented by eg. std Go (golang) [csv package](https://golang.org/pkg/encoding/csv). This gives a possibility
 of choosing any other CSV writer or reader which may be more performant.
 
 Installation
 ------------
 
-    go get github.com/jszwec/csvutil
+    go get github.com/sqkjdev/csvutil
 
 Requirements
 -------------
@@ -46,7 +46,7 @@ Example <a name="examples"></a>
 
 ### Unmarshal <a name="examples_unmarshal"></a>
 
-Nice and easy Unmarshal is using the Go std [csv.Reader](https://golang.org/pkg/encoding/csv/#Reader) with its default options. Use [Decoder](https://godoc.org/github.com/jszwec/csvutil#Decoder) for streaming and more advanced use cases.
+Nice and easy Unmarshal is using the Go std [csv.Reader](https://golang.org/pkg/encoding/csv/#Reader) with its default options. Use [Decoder](https://godoc.org/github.com/sqkjdev/csvutil#Decoder) for streaming and more advanced use cases.
 
 ```go
 	var csvInput = []byte(`
@@ -77,7 +77,7 @@ john,,0001-01-01T00:00:00Z`,
 
 ### Marshal <a name="examples_marshal"></a>
 
-Marshal is using the Go std [csv.Writer](https://golang.org/pkg/encoding/csv/#Writer) with its default options. Use [Encoder](https://godoc.org/github.com/jszwec/csvutil#Encoder) for streaming or to use a different Writer.
+Marshal is using the Go std [csv.Writer](https://golang.org/pkg/encoding/csv/#Writer) with its default options. Use [Encoder](https://godoc.org/github.com/sqkjdev/csvutil#Encoder) for streaming or to use a different Writer.
 
 ```go
 	type Address struct {
@@ -121,9 +121,9 @@ Marshal is using the Go std [csv.Writer](https://golang.org/pkg/encoding/csv/#Wr
 
 It may happen that your CSV input will not always have the same header. In addition
 to your base fields you may get extra metadata that you would still like to store.
-[Decoder](https://godoc.org/github.com/jszwec/csvutil#Decoder) provides 
-[Unused](https://godoc.org/github.com/jszwec/csvutil#Decoder.Unused) method, which after each call to 
-[Decode](https://godoc.org/github.com/jszwec/csvutil#Decoder.Decode) can report which header indexes 
+[Decoder](https://godoc.org/github.com/sqkjdev/csvutil#Decoder) provides 
+[Unused](https://godoc.org/github.com/sqkjdev/csvutil#Decoder.Unused) method, which after each call to 
+[Decode](https://godoc.org/github.com/sqkjdev/csvutil#Decoder.Decode) can report which header indexes 
 were not used during decoding. Based on that, it is possible to handle and store all these extra values.
 
 ```go
@@ -215,7 +215,7 @@ it to a decoder.
 
 ### Decoder.Map - data normalization <a name="examples_decoder_map"></a>
 
-The Decoder's [Map](https://godoc.org/github.com/jszwec/csvutil#Decoder.Map) function is a powerful tool that can help clean up or normalize
+The Decoder's [Map](https://godoc.org/github.com/sqkjdev/csvutil#Decoder.Map) function is a powerful tool that can help clean up or normalize
 the incoming data before the actual decoding takes place.
 
 Lets say we want to decode some floats and the csv input contains some NaN values, but these values are represented by the 'n/a' string. An attempt to decode 'n/a' into float will end up with error, because strconv.ParseFloat expects 'NaN'. Knowing that, we can implement a Map function that will normalize our 'n/a' string and turn it to 'NaN' only for float types.
@@ -234,7 +234,7 @@ Lets say we want to decode some floats and the csv input contains some NaN value
 	}
 ```
 
-Now our float64 fields will be decoded properly into NaN. What about float32, float type aliases and other NaN formats? Look at the full example [here](https://gist.github.com/jszwec/2bb94f8f3612e0162eb16003701f727e).
+Now our float64 fields will be decoded properly into NaN. What about float32, float type aliases and other NaN formats? Look at the full example [here](https://gist.github.com/sqkjdev/2bb94f8f3612e0162eb16003701f727e).
 
 ### Different separator/delimiter <a name="examples_different_separator"></a>
 
@@ -287,7 +287,7 @@ Some files may use different value separators, for example TSV files would use `
 
 There are multiple ways to customize or override your type's behavior.
 
-1. a type implements [csvutil.Marshaler](https://pkg.go.dev/github.com/jszwec/csvutil#Marshaler) and/or [csvutil.Unmarshaler](https://pkg.go.dev/github.com/jszwec/csvutil#Unmarshaler)
+1. a type implements [csvutil.Marshaler](https://pkg.go.dev/github.com/sqkjdev/csvutil#Marshaler) and/or [csvutil.Unmarshaler](https://pkg.go.dev/github.com/sqkjdev/csvutil#Unmarshaler)
 ```go
 type Foo int64
 
@@ -321,7 +321,7 @@ func (f *Foo) UnmarshalText(data []byte) error {
 	return nil
 }
 ```
-3. a type is registered using [Encoder.WithMarshalers](https://pkg.go.dev/github.com/jszwec/csvutil#Encoder.WithMarshalers) and/or [Decoder.WithUnmarshalers](https://pkg.go.dev/github.com/jszwec/csvutil#Decoder.WithUnmarshalers)
+3. a type is registered using [Encoder.WithMarshalers](https://pkg.go.dev/github.com/sqkjdev/csvutil#Encoder.WithMarshalers) and/or [Decoder.WithUnmarshalers](https://pkg.go.dev/github.com/sqkjdev/csvutil#Decoder.WithUnmarshalers)
 ```go
 type Foo int64
 
@@ -342,7 +342,7 @@ dec.WithUnmarshalers(
 	}),
 )
 ```
-4. a type implements an interface that was registered using [Encoder.WithMarshalers](https://pkg.go.dev/github.com/jszwec/csvutil#Encoder.WithMarshalers) and/or [Decoder.WithUnmarshalers](https://pkg.go.dev/github.com/jszwec/csvutil#Decoder.WithUnmarshalers)
+4. a type implements an interface that was registered using [Encoder.WithMarshalers](https://pkg.go.dev/github.com/sqkjdev/csvutil#Encoder.WithMarshalers) and/or [Decoder.WithUnmarshalers](https://pkg.go.dev/github.com/sqkjdev/csvutil#Decoder.WithUnmarshalers)
 ```go
 type Foo int64
 
@@ -351,7 +351,7 @@ func (f Foo) String() string {
 }
 
 func (f *Foo) Scan(state fmt.ScanState, verb rune) error {
-	// too long; look here: https://github.com/jszwec/csvutil/blob/master/example_decoder_register_test.go#L19
+	// too long; look here: https://github.com/sqkjdev/csvutil/blob/master/example_decoder_register_test.go#L19
 }
 
 enc.WithMarshalers(
@@ -374,7 +374,7 @@ The order of precedence for both Encoder and Decoder is:
 3. csvutil.{Un,M}arshaler
 4. encoding.Text{Un,M}arshaler
 
-For more examples look [here](https://pkg.go.dev/github.com/jszwec/csvutil?readme=expanded#pkg-examples)
+For more examples look [here](https://pkg.go.dev/github.com/sqkjdev/csvutil?readme=expanded#pkg-examples)
 
 ### Custom time.Time format <a name="examples_time_format"></a>
 
@@ -510,7 +510,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 type Address struct {
@@ -572,7 +572,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 func main() {
@@ -619,7 +619,7 @@ csvutil provides the best encoding and decoding performance with small memory us
 
 ### Unmarshal <a name="performance_unmarshal"></a>
 
-[benchmark code](https://gist.github.com/jszwec/e8515e741190454fa3494bcd3e1f100f)
+[benchmark code](https://gist.github.com/sqkjdev/e8515e741190454fa3494bcd3e1f100f)
 
 #### csvutil:
 ```
@@ -653,7 +653,7 @@ BenchmarkUnmarshal/easycsv.ReadAll/100000_records-12     	       3	 468974170 ns
 
 ### Marshal <a name="performance_marshal"></a>
 
-[benchmark code](https://gist.github.com/jszwec/31980321e1852ebb5615a44ccf374f17)
+[benchmark code](https://gist.github.com/sqkjdev/31980321e1852ebb5615a44ccf374f17)
 
 #### csvutil:
 ```

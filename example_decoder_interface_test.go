@@ -7,7 +7,7 @@ import (
 	"io"
 	"log"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 // Value defines one record in the csv input. In this example it is important

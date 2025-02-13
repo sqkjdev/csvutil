@@ -3,7 +3,7 @@ package csvutil_test
 import (
 	"fmt"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 type Status uint8

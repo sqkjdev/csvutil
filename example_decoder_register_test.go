@@ -9,7 +9,7 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 type IntStruct struct {

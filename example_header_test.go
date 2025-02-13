@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 func ExampleHeader() {

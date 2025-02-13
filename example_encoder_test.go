@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/jszwec/csvutil"
+	"github.com/sqkjdev/csvutil"
 )
 
 func ExampleEncoder_Encode_streaming() {
